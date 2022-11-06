@@ -1,0 +1,14 @@
+<view class="three">图片</view>
+  <view class="weui-uploader">
+    <view class='pics' wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+        <image class='weui-uploader__img' src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg">
+                  <icon type='cancel' class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></icon>
+        </image>
+    </view>
+    <view class="tp_cont {{tj_ycang?'':'hide'}}" bindtap="chooseImg">
+      <view class="tp_add">+</view>
+    </view>
+		<!-- <view class="tp_cont {{tj_ycang?'':'hide'}}" bindtap="showImg">
+      <view class="tp_add">show</view>
+    </view> -->
+</view>

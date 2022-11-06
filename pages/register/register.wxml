@@ -1,0 +1,90 @@
+<!--pages/center/center.wxml-->
+<view class="login">
+	<view class="tips">
+		<text>请注册用户信息</text>
+	</view>
+  <form class='login-inp' bindsubmit="formSubmit">
+    <view class="register-input">
+      <text>用户名称：</text>
+      <input type="text" name="userName" placeholder="用户名字" placeholder-class="phcolor" bindinput="nameInput" value='{{userName}}'></input>
+    </view>
+		<picker class="register-input" bindchange="pickerSex" range="{{gender}}">
+    <view> 性别： {{sex}}</view>
+    </picker>
+		<view class="register-input">
+      <text>微信号码：</text>
+      <input type="text" name="wxNumber" placeholder="微信号码"  placeholder-class="phcolor" bindinput="wxNumberInput" value='{{wxNumber}}'></input>
+    </view>
+		<view class="register-input">
+      <text>手机号码：</text>
+      <input type="number" name="phoneNumber" placeholder="手机号码"  
+			placeholder-class="phcolor" bindinput="phoneNumberInput" value='{{phoneNumber}}'></input>
+    </view>
+		<picker class="register-input" mode="date" start="1800-01-01" end="2999-12-12" bindchange="pickerDate">
+    <view>出生日期：{{birthDay}}</view>
+    </picker>
+		<picker class="register-input" bindchange="pickerWeight" range="{{weightRange}}">
+    <view> 体重： {{weight}}</view>
+    </picker>
+		<picker class="register-input" bindchange="pickerHeight" range="{{heightRange}}">
+    <view> 身高： {{height}}</view>
+    </picker>
+	
+		<view class="register-input">
+      <text>职业：</text>
+      <input type="text" name="jobName" placeholder="职业"  placeholder-class="phcolor" bindinput="jobNameInput" value='{{jobName}}'></input>
+    </view>
+		<view class="register-input">
+      <text>收入：</text>
+      <input type="text" name="income" placeholder="收入"  placeholder-class="phcolor" 
+			bindinput="incomeInput" value='{{income}}'></input>
+	  </view>
+	
+		<picker class="register-input" mode='region' bindchange='pickerRegion'>
+    <view>籍贯：{{nativeAddress}}</view>
+    </picker>
+		<picker class="register-input" mode='region' bindchange='pickerWorkRegion'>
+    <view>工作地点：{{workAddress}}</view>
+    </picker>
+
+    <picker class="register-input"
+		bindchange="pickerConstellation" range="{{constellationRange}}">
+		<view>星座：{{constellation}}</view>
+		</picker>
+
+		<view class="register-textarea">
+      <text style=" padding-left: 30rpx;line-height: 88rpx;">关于你：</text>
+      <textarea type="text" name="aboutYou" placeholder="关于你的情况"  
+			bindinput="aboutYouInput"
+			placeholder-class="phcolor" value='{{aboutYou}}' style="position: relative; left: 19rpx; top: 1rpx; border-style: groove"></textarea>
+    </view>
+
+		<view class="register-textarea">
+      <text style=" padding-left: 30rpx;line-height: 88rpx;">关于她或他：</text>
+      <textarea type="text" name="aboutOther" placeholder="对于另一半的期望"  
+			bindinput="aboutOtherInput"
+			placeholder-class="phcolor" value='{{aboutOther}}' style="position: relative; left: 24rpx; top: 1rpx;border-style:groove" ></textarea>
+    </view>
+		<view class="register-pic">
+		  <view class="three" style="padding-left: 30rpx">个人头像</view>
+			<view class="weui-uploader" style="padding-left: 30rpx">
+					<view class='pics' wx:for="{{imgs}}" wx:for-item="item" wx:key="*this">
+							<image class='weui-uploader__img' src="{{item}}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg">
+												<icon type='cancel' class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></icon>
+							</image>
+					</view>
+					<view class="tp_cont {{tj_ycang?'':'hide'}}" bindtap="chooseImg">
+						<view class="tp_add">+</view>
+					</view>
+		</view>
+	 </view>
+
+	 
+    <button form-type='submit' class='loginbtn' formType="submit" 
+		bindsubmit="formSubmit"
+		style="position: relative; left: 0rpx; top: -68rpx">注册</button>
+  </form>
+  <view class='logo-box'>
+    <text style="width: 750rpx; display: block; box-sizing: border-box;  font-size: 35rpx;">联系人微信：ahbych</text>
+  </view>
+</view>

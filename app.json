@@ -1,0 +1,49 @@
+{
+	"pages": [
+		"pages/register/register",
+		"pages/center/center",
+		"pages/mine/mine",
+		"pages/tool/tool",
+		"pages/abc/abc"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "晋京交流群",
+		"navigationBarTextStyle": "black",
+		"enablePullDownRefresh": true 
+
+	},
+	"style": "v2",
+	"sitemapLocation": "sitemap.json",
+	"tabBar": {
+		"color": "#333333",
+		"selectedColor": "#f8614a",
+		"list": [
+			{
+				"pagePath": "pages/register/register",
+				"text": "注册信息",
+				"iconPath": "images/icon/tabar-icon_index.png",
+				"selectedIconPath": "images/icon/tabar-icon_index_active.png"
+			},
+			{
+				"pagePath": "pages/center/center",
+				"text": "信息列表",
+				"iconPath": "images/icon/tabar-icon_welfare.png",
+				"selectedIconPath": "images/icon/tabar-icon_welfare_active.png"
+			},
+			{
+				"pagePath": "pages/mine/mine",
+				"text": "个人信息查询",
+				"iconPath": "images/icon/tabar-icon_coupon.png",
+				"selectedIconPath": "images/icon/tabar-icon_coupon_active.png"
+			},
+			{
+				"pagePath": "pages/abc/abc",
+				"text": "测试",
+				"iconPath": "images/icon/tabar-icon_coupon.png",
+				"selectedIconPath": "images/icon/tabar-icon_coupon_active.png"
+			}
+		]
+	}
+}
