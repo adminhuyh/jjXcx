@@ -1,0 +1,42 @@
+<!--pages/register-detail/register-detail.wxml-->
+<!--详情页-->
+<!--等待框-->
+<loading hidden="{{!loading}}">加载中...</loading>
+<!--滚动列表-->
+<!-- <scroll-view scroll-y="true" wx:if="{{userInfo.id}}"> -->
+<view class="register-detail-card">
+</view>
+<view class="base-info" style="position: relative; left: 0rpx; top: -10rpx">
+   <view class='base'>
+    <!-- <image class='' src='{{showImageXcx+userInfo.lifeImage}}'></image> -->
+		<text class='title'>编号：{{userInfo.userNo}}</text>
+    <text class='title'>性别：{{userInfo.sexDesc}}</text>
+		<text class='title'>手机号码：{{userInfo.phoneNumber}}</text>
+		<text class='title'>出生日期：{{userInfo.birthDay}}</text>
+		<text class='title'>体重：{{userInfo.weight}}</text>
+		<text class='title'>身高：{{userInfo.height}}</text>
+		<text class='title'>职业：{{userInfo.jobName}}</text>
+		<text class='title'>收入：{{userInfo.income}}</text>
+		<text class='title'>籍贯：{{userInfo.nativeAddressName}}</text>
+		<text class='title'>工作地点：{{userInfo.workAddressName}}</text>
+		<text class='title'>星座：{{userInfo.constellation}}</text>
+   </view >
+    <!--介绍区域-->
+	<view class='textarea-info'>
+	    关于你：
+			<textarea class = 'textarea-content'  >
+				{{userInfo.aboutYou}}
+			</textarea>
+	</view>
+	<view class='textarea-info'>
+			关于她或他：
+			<textarea class = 'textarea-content'  >
+				{{userInfo.aboutOther}}
+			</textarea>
+	</view>
+		<!--图片显示区域-->
+	<view class='image-info' wx:for="{{userInfo.lifeImageList}}" wx:for-item="item" wx:key="idx">
+		  <image src="{{showImageXcx+item}}" class="image-detail"   style="width: 699rpx; height: 563rpx; display: inline-block; box-sizing: border-box"></image>
+ </view>
+</view> 
+<!-- </scroll-view> -->

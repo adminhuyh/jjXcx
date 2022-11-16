@@ -1,14 +1,13 @@
-<view class="common-list common-list-index">
-    <view class="item" wx:for="{{ list }}" wx:key="id" data-id="{{item.id}}" data-item="{{item}}" catchtap="toDetail">
-      <view class="title">客户：{{ item.customerNm }} <text class="fr">客户类型：{{ item.customerTypeName }}</text>
-      </view>
-      <view><text>客户编号：{{item.customerCd}}</text><text> 提报人：{{ item.createBy }}</text></view>
-      <view><text>客户联系人：{{ item.linkman||"" }}</text><text>联系电话：{{ item.tel||"" }}</text> </view>
-      <view> <text>公司地址：{{ item.companyAdd||"" }}</text></view>
-      <view class="clearfix">
-        <view class="btn-record btn-update fr" wx:if="{{!isSelect}}" data-id="{{item.id}}" catchtap="updateCustomer">修改
-        </view>
-        <view class="btn-del fr" wx:if="{{!isSelect}}" data-id="{{item.id}}" catchtap="delCustomer">删除</view>
-      </view>
+<!--pages/shoplist/shoplist.wxml-->
+<view class="shop-item" wx:for="{{list}}" wx:key="id">
+    <view class="thumb">
+        <image src="{{showImageXcx+item.mainImage}}"></image>
     </view>
-  </view>
+    <view class="info" bindtap="jumpToDetail" data-id="{{item.id}}">
+        <text class="shop-title">{{item.userName}}</text>
+        <text>用户名称:{{item.userName}}</text>
+        <text>年龄：{{item.birthDay}}</text>
+        <text>编号：{{item.userNo}}</text>
+    </view>
+</view>
+<wxs src="../../utils/tools.wxs" module="tools"></wxs>

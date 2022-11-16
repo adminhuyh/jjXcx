@@ -24,7 +24,7 @@
     <view>出生日期：{{birthDay}}</view>
     </picker>
 		<picker class="register-input" bindchange="pickerWeight" range="{{weightRange}}">
-    <view> 体重： {{weight}}</view>
+    <view> 体重：{{weight}}</view>
     </picker>
 		<picker class="register-input" bindchange="pickerHeight" range="{{heightRange}}">
     <view> 身高： {{height}}</view>
@@ -56,14 +56,13 @@
       <text style=" padding-left: 30rpx;line-height: 88rpx;">关于你：</text>
       <textarea type="text" name="aboutYou" placeholder="关于你的情况"  
 			bindinput="aboutYouInput"
-			placeholder-class="phcolor" value='{{aboutYou}}' style="position: relative; left: 19rpx; top: 1rpx; border-style: groove"></textarea>
+			placeholder-class="phcolor" value='{{aboutYou}}' style="position: relative; left: 29rpx; top: 0rpx; border-style: groove; width: 691rpx; height: 266rpx; display: block; box-sizing: border-box" maxlength="500"></textarea>
     </view>
-
 		<view class="register-textarea">
-      <text style=" padding-left: 30rpx;line-height: 88rpx;">关于她或他：</text>
+      <text style="padding-left: 30rpx;line-height: 88rpx;">关于她或他：</text>
       <textarea type="text" name="aboutOther" placeholder="对于另一半的期望"  
 			bindinput="aboutOtherInput"
-			placeholder-class="phcolor" value='{{aboutOther}}' style="position: relative; left: 24rpx; top: 1rpx;border-style:groove" ></textarea>
+			placeholder-class="phcolor" value='{{aboutOther}}' style="position: relative; left: 29rpx; top: 0rpx; border-style: groove; width: 691rpx; height: 266rpx; display: block; box-sizing: border-box" maxlength="500"></textarea>
     </view>
 		<view class="register-pic">
 		  <view class="three" style="padding-left: 30rpx">个人头像</view>
@@ -80,11 +79,11 @@
 	 </view>
 
 	 
-    <button form-type='submit' class='loginbtn' formType="submit" 
-		bindsubmit="formSubmit"
+    <button form-type="reset" class='loginbtn' 
+		form-type='submit' 
 		style="position: relative; left: 0rpx; top: -68rpx">注册</button>
   </form>
   <view class='logo-box'>
-    <text style="width: 750rpx; display: block; box-sizing: border-box;  font-size: 35rpx;">联系人微信：ahbych</text>
+    <text style="width: 750rpx; display: block; box-sizing: border-box;  font-size: 35rpx;">客服微信：ahbych</text>
   </view>
 </view>

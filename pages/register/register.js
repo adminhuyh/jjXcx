@@ -21,7 +21,6 @@ function Person(userName, sex, wxNumber,phoneNumber,jobName,income, nativeAddres
 }
 
 Page({
-
 	/**
 	 * 页面的初始数据
 	 */
@@ -47,30 +46,27 @@ Page({
 		saveImags: [],
   },
 
-  nameInput: function(e) { //姓名input组件输入事件函数
-    this.userName = e.detail.value //获取input组件value值
+	nameInput: function(e) { //姓名input组件输入事件函数
+		//this.userName = e.detail.value //获取input组件value值
 	},
 	wxNumberInput: function(e) { //姓名input组件输入事件函数
-    this.wxNumber = e.detail.value //获取input组件value值
+    //this.wxNumber = e.detail.value //获取input组件value值
 	},
 	phoneNumberInput: function(e) { //姓名input组件输入事件函数
-    this.phoneNumber = e.detail.value //获取input组件value值
+    //this.phoneNumber = e.detail.value //获取input组件value值
 	},
 	jobNameInput: function(e) { //姓名input组件输入事件函数
-    this.jobName = e.detail.value //获取input组件value值
+    //this.jobName = e.detail.value //获取input组件value值
 	},
 	incomeInput: function(e) { //姓名input组件输入事件函数
-    this.income = e.detail.value //获取input组件value值
+    //this.income = e.detail.value //获取input组件value值
 	},
 	aboutYouInput: function(e) { //姓名input组件输入事件函数
-    this.aboutYou = e.detail.value //获取input组件value值
+    //this.aboutYou = e.detail.value //获取input组件value值
 	},
 	aboutOtherInput: function(e) { //姓名input组件输入事件函数
-    this.aboutOther = e.detail.value //获取input组件value值
+    //this.aboutOther = e.detail.value //获取input组件value值
 	},
-	
-	
-	
 	pickerSex: function(e) { //性别picker组件事件函数
 		this.sex = this.data.gender[e.detail.value] //获取性别
     this.setData({
@@ -89,12 +85,6 @@ Page({
       weight: this.weight //选择完成后在视图层picker组件后面显示性别
     })
 	},
-	picker: function(e) { //性别picker组件事件函数
-    this.weight = this.data.weightRange[e.detail.value] //获取性别
-    this.setData({
-      weight: this.weight //选择完成后在视图层picker组件后面显示性别
-    })
-  },
   pickerRegion: function(e) { //地区picker组件事件函数
     this.nativeAddress = e.detail.value; //获取籍贯
     this.setData({
@@ -118,36 +108,46 @@ Page({
     this.setData({
       constellation: this.constellation //选择完成后在视图层picker组件后面显示星坐
     })
-  },
+	},
+	
 
 	formSubmit: function (e) {
+		console.log(e);
+		var checkRes =  this.checkForm(e);
+		if (checkRes != "") {
+			wx.showToast({
+				title: checkRes,
+				mask:true,    
+				icon:'false'
+			});
+      return;
+		}
 		var intSex ;
-		if(this.sex == '男'){
+		if(this.data.sex == '男'){
 			intSex = 1;
-		}else if(this.sex == '女'){
+		}else if(this.data.sex == '女'){
 			intSex = 2;
 		}else {
 			intSex = 0;
 		}
-		var that = this;
     wx.request({
 			url: jjXcx+"/addUser", 
 			method: 'post',
       data: {
-					"userName":this.userName,
+					"userName":e.detail.value.userName,
 					"sex":intSex,
-					"wxNumber":this.wxNumber,
-					"phoneNumber":this.phoneNumber,
-					"jobName":this.jobName,
-					"income":this.income,
-					"nativeAddress":this.nativeAddress,
-					"workAddress":this.workAddress,
-					"birthDay":this.birthDay,
-					"height":this.height,
-					"weight":this.weight,
+					"wxNumber":e.detail.value.wxNumber,
+					"phoneNumber":e.detail.value.phoneNumber,
+					"jobName":e.detail.value.jobName,
+					"income":e.detail.value.income,
+					"nativeAddress":this.data.nativeAddress,
+					"workAddress":this.data.workAddress,
+					"birthDay":this.data.birthDay,
+					"height":this.data.height,
+					"weight":this.data.weight,
 					"constellation":this.constellation,
-					"aboutYou":this.aboutYou,
-					"aboutOther":this.aboutOther,
+					"aboutYou":e.detail.value.aboutYou,
+					"aboutOther":e.detail.value.aboutOther,
 					"lifeImageList":this.data.saveImags,
       },
       header: {
@@ -156,46 +156,87 @@ Page({
       success: function (res) {
         console.log(res);
         if(res.data.status == 1){
-          //注册成功
-					//console.log("注册成功");
 					wx.showToast({
 						title: '注册成功',
 						mask:true,    
 						icon:'success'
 					});
-					that.on
 					wx.switchTab({
-            url: '/pages/register/register',
+            url: '/pages/center/center',
           })
         }else{
-          //注册失败
-					//console.log("注册失败");
 					wx.showToast({
 						title: '注册失败',
 						mask:true,    
 						icon:'error'
-					})
+					});
         }
       },
       fail:function(){
-         //服务异常
-      }
+				 //服务异常
+				 wx.showToast({
+					title: '服务异常',
+					mask:true,    
+					icon:'error'
+				});
+			}
     })
 	},
-	
+ checkForm: function (e) {
+	 let message = "";
+	  if(e.detail.value.userName==""){
+			message = "用户名不能为空";
+			return message;
+		}else if(this.data.sex == undefined || this.data.sex == ""){
+			message = "性别不能为空";
+			return message;
+		}else if(e.detail.value.phoneNumber==""){
+			message = "手机号不能为空";
+			return  message;
+		}else if(e.detail.value.jobName==""){
+			message = "职位不能为空";
+			return message;
+		}else if(e.detail.value.income==""){
+			message = "收入不能为空";
+			return message;
+		}else if(e.detail.value.income==""){
+			message = "收入不能为空";
+			return message;
+		}else if(this.data.nativeAddress == undefined  || this.data.nativeAddress == ""){
+			message = "籍贯不能为空";
+			return message;
+		}else if(this.data.workAddress==undefined  || this.data.workAddress == ""){
+			message = "工作单位不能为空";
+			return message;
+		}else if(this.data.birthDay==undefined  || this.data.birthDay == ""){
+			message = "生日不能为空";
+			return message;
+		}else if(this.data.height==undefined  || this.data.height == ""){
+			message = "身高不能为空";
+			return message;
+		}else if(this.data.weight==undefined  || this.data.weight == ""){
+			message = "体重不能为空";
+			return message;
+		}else if(this.data.constellation==undefined  || this.data.constellation == ""){
+			message = "星座不能为空";
+			return message;
+		}else if(e.detail.value.aboutYou==""){
+			message = "关于你不能为空";
+			return message;
+		}else if(e.detail.value.aboutOther==""){
+			message = "关于她或他不能为空";
+			return message;
+		}
+		return message;
+ },
+
+
+
 	// 上传图片
 	chooseImg: function (e) {
 		var that = this;
 		var imgs = this.data.imgs;
 		if (imgs.length >= 3) {
-		//  this.setData({
-		//   lenMore: 1
-		//  });
-		//  setTimeout(function () {
-		//   that.setData({
-		//    lenMore: 0
-		//   });
-		//  }, 2500);
 		 wx.showToast({
 			 title: '最多上传三个图片',
 			 mask:true,    
@@ -204,7 +245,7 @@ Page({
 		 return false;
 		}
 		wx.chooseImage({
-		 // count: 1, // 默认9
+		 count: 3, // 默认9
 		 sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
 		 sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
 		 success: function (res) {
@@ -276,11 +317,33 @@ Page({
 		})
 	 },
 
+	 onRefresh: function (e) {	
+		 this.setData({
+				imgs: [],
+				saveImags: [],
+				sex:"",
+				userName:"",
+				wxNumber:"",
+				phoneNumber:"",
+				jobName:"",
+				income:"",
+				nativeAddress:"",
+				workAddress:"",
+				birthDay:"",
+				height:"",
+				weight:"",
+				constellation:"",
+				aboutYou:"",
+				aboutOther:"",
+		 });
+	
+	 },
+	 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
-	onLoad(options) {
-
+	onLoad(options) {   
+		
 	},
 
 	/**
@@ -294,28 +357,28 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow() {
-
+		
 	},
 
 	/**
 	 * 生命周期函数--监听页面隐藏
 	 */
 	onHide() {
-
+		//wx.pageScrollTo({scrollTop:0});
 	},
 
 	/**
 	 * 生命周期函数--监听页面卸载
 	 */
 	onUnload() {
-
+		onRefresh();
 	},
 
 	/**
 	 * 页面相关事件处理函数--监听用户下拉动作
 	 */
 	onPullDownRefresh() {
-
+		this.onRefresh();
 	},
 
 	/**

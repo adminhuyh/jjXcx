@@ -18,8 +18,9 @@ App({
 		  //正式服
 			//jjXcx:'http://localhost:80/xcx/demon/template',
 			//测试服
-			jjXcx:'http://127.0.0.1:8080/xcx/api',
+			jjXcx:'http://127.0.0.1:8080/xcx/user/api',
 			imageXcx:'http://127.0.0.1:8080/xcx/upload/uploadImage',
+			showImageXcx:'http://127.0.0.1:8080/',
 			echartsMSG:{}
 	}
 	
