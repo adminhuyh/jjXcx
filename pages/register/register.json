@@ -1,5 +1,8 @@
 {
+	"lazyCodeLoading": "requiredComponents",
 	"navigationBarTitleText": "用户信息注册",
 	"enablePullDownRefresh":true,
-	"usingComponents": {}
+	"usingComponents": {},
+	"backgroundColor": "#efefef",
+	"backgroundTextStyle": "dark"
 }

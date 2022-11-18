@@ -2,23 +2,6 @@
 
 var jjXcx = getApp().globalData.jjXcx;
 
-function Person(userName, sex, wxNumber,phoneNumber,jobName,income, nativeAddress,workAddress, birthDay, height, weight,constellation,aboutYou,aboutOther,lifeImageList) { //定义构造函数，用于创建对象
-	this.userName = userName; //将函数参数赋值给对象属性
-	this.sex = sex;
-	this.wxNumber = wxNumber;
-	this.phoneNumber = phoneNumber;
-	this.jobName = jobName;
-	this.income = income;
-	this.nativeAddress = nativeAddress;
-	this.workAddress = workAddress;
-  this.birthDay = birthDay;
-  this.height = height;
-	this.weight = weight;
-	this.constellation = constellation;
-	this.aboutYou = aboutYou;
-	this.aboutOther = aboutOther;
-	this.lifeImageList = lifeImageList;
-}
 
 Page({
 	/**
@@ -154,7 +137,6 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-        console.log(res);
         if(res.data.status == 1){
 					wx.showToast({
 						title: '注册成功',

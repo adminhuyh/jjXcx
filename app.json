@@ -6,6 +6,7 @@
 		"pages/register-detail/register-detail"
 	],
 	"window": {
+		"lazyCodeLoading": "requiredComponents",
 		"backgroundTextStyle": "light",
 		"navigationBarBackgroundColor": "#fff",
 		"navigationBarTitleText": "晋京交流群",

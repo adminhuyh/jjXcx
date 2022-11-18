@@ -1,3 +1,4 @@
 {
+	"lazyCodeLoading": "requiredComponents",
 	"usingComponents": {}
 }

@@ -18,9 +18,18 @@ App({
 		  //正式服
 			//jjXcx:'http://localhost:80/xcx/demon/template',
 			//测试服
-			jjXcx:'http://127.0.0.1:8080/xcx/user/api',
-			imageXcx:'http://127.0.0.1:8080/xcx/upload/uploadImage',
-			showImageXcx:'http://127.0.0.1:8080/',
+			// jjXcx:'http://127.0.0.1:8080/xcx/user/api',
+			// imageXcx:'http://127.0.0.1:8080/xcx/upload/uploadImage',
+			// showImageXcx:'http://127.0.0.1:8080/',
+				//测试服
+			// jjXcx:'https://216394c1z0.yicp.fun/xcx/user/api',
+			// imageXcx:'https://216394c1z0.yicp.fun/xcx/upload/uploadImage',
+			// showImageXcx:'https://adminhuyuhang.com:443/',
+				jjXcx:'/xcx/user/api',
+			  imageXcx:'/xcx/upload/uploadImage',
+				showImageXcx:'/',
+				
+				
 			echartsMSG:{}
 	}
 	

@@ -1,4 +1,5 @@
 {
+	"lazyCodeLoading": "requiredComponents",
   "usingComponents": {},
   "onReachBottomDistance": 50,
   "enablePullDownRefresh": true,

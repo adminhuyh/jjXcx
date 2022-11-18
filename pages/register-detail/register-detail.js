@@ -29,8 +29,6 @@ Page({
       },
       success:function(res) {
 				// 赋值
-				console.log(res);
-				console.log(res.data.content);
         _this.setData({
           userInfo: res.data.content,
           loading: false // 隐藏等待框

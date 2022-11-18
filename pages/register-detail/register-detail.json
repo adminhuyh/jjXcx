@@ -1,4 +1,5 @@
 {
+	"lazyCodeLoading": "requiredComponents",
 	"usingComponents": {},
 	"navigationBarTitleText": "用户详情页"
 }
